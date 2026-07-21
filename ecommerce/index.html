@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Sheraktech - Store Design Concepts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <base href="/ecommerce/">
+    
+    <!-- fonts & icons -->
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/icon/icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg">
+
+    <style>
+        body {
+            background-color: #05060b;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(217, 70, 239, 0.08) 0%, transparent 50%);
+            color: #f8fafc;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Section to match screenshot */
+        .sherak-nav {
+            padding: 24px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 6, 11, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo span {
+            color: #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-link-item {
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-link-item:hover {
+            color: #ffffff;
+        }
+        .btn-quote-nav {
+            background: linear-gradient(135deg, #a21caf 0%, #db2777 100%);
+            color: #ffffff !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(219, 39, 119, 0.2);
+        }
+        .btn-quote-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(219, 39, 119, 0.4);
+        }
+
+        /* Hero Section based on screenshot */
+        .hero-section {
+            padding: 90px 0 60px;
+            text-align: center;
+        }
+        .badge-pill-innovative {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            max-width: 900px;
+            margin: 0 auto 24px;
+            letter-spacing: -1px;
+        }
+        .hero-title span {
+            background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .btn-quote-hero {
+            background: linear-gradient(135deg, #a21caf 0%, #db2777 100%);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(219, 39, 119, 0.3);
+        }
+        .btn-quote-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5);
+        }
+        .btn-services-hero {
+            background: #ffffff;
+            color: #0f172a;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        .btn-services-hero:hover {
+            transform: translateY(-2px);
+            background: #f1f5f9;
+        }
+
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+        .template-card {
+            background: rgba(15, 17, 28, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .template-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(99, 102, 241, 0.1);
+        }
+        .template-card:hover::before {
+            opacity: 1;
+        }
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: rgba(59, 130, 246, 0.08);
+            color: #60a5fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 22px;
+            transition: all 0.4s ease;
+        }
+        .template-card:hover .icon-wrapper {
+            background: #3b82f6;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+        .template-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .template-desc {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            min-height: 45px;
+        }
+        .work-thumbnail-container {
+            width: 100%;
+            height: 160px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+        .work-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .template-card:hover .work-thumbnail {
+            transform: scale(1.05);
+        }
+        .preview-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .template-card:hover .preview-btn {
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Floating WhatsApp Button to match screenshot */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+            box-shadow: 2px 2px 25px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 30px;
+            z-index: 10;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+        }
+        /* Make badges highly visible with solid colors */
+        .badge-new[style*="rgba(234, 179, 8, 0.15)"],
+        .badge-new[style*="rgba(234, 179, 8, 0.2)"],
+        .badge-new[style*="rgba(234, 179, 8, 0.4)"] {
+            background: #facc15 !important;
+            color: #05060b !important;
+            border: 1px solid #facc15 !important;
+        }
+        .badge-new[style*="rgba(59, 130, 246, 0.2)"],
+        .badge-new[style*="rgba(59, 130, 246, 0.4)"] {
+            background: #3b82f6 !important;
+            color: #ffffff !important;
+            border: 1px solid #3b82f6 !important;
+        }
+    </style>
+<script>sessionStorage.removeItem('ecommerce_home');</script>
+</head>
+<body>
+
+    <!-- Header bar based on screenshot -->
+    <nav class="sherak-nav">
+        <a href="../index.html" class="nav-logo">
+            Sherak<span>tech</span>
+        </a>
+        <div class="nav-links">
+            <a href="https://wa.me/918921119446?text=Can%20i%20have%20my%20own%20E-Commerce%20website%3F" class="btn-quote-nav">Get Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero section matching screenshot vibe -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="badge-pill-innovative">Innovative Digital Solutions</div>
+            <h1 class="hero-title">Empowering Your Business in the <span>Digital Era</span></h1>
+            <p class="hero-subtitle">We craft stunning websites, robust custom web applications, and powerful e-commerce platforms tailored to your business needs.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/918921119446?text=Can%20i%20have%20my%20own%20E-Commerce%20website%3F" class="btn-quote-hero">Get Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main templates and work concepts grid -->
+    <div class="container" id="store-concepts">
+        <div class="templates-grid">
+            
+            <!-- 1. Fashion -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Fashion Main</h3>
+                    <p class="template-desc">Our flagship fashion layout designed for modern apparel brands.</p>
+                </div>
+                <a href="home-fashion.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 2. Fashion 2 -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Fashion Minimal</h3>
+                    <p class="template-desc">Sleek, image-heavy layout designed to highlight curated collections.</p>
+                </div>
+                <a href="home-fashion-2.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 3. Fashion Web -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.4);">DEMO ONLY</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/fashionstore.png" alt="Fashion Store Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Fashion and Clothing</h3>
+                    <p class="template-desc">Traditional multi-column layout for diverse apparel lines.</p>
+                </div>
+                <a href="home-fashionweb.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 4. Mental / Spa -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-heart"></i>
+                    </div>
+                    <h3 class="template-name">Mental & Spa</h3>
+                    <p class="template-desc">Soothing tones and layouts for wellness products and treatments.</p>
+                </div>
+                <a href="home-mental.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 5. Electronics -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Electronics</h3>
+                    <p class="template-desc">Technical specification layouts optimized for gadgets and hardware.</p>
+                </div>
+                <a href="home-electronics.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 6. Print on Demand (Print on Demand) -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Print on Demand</h3>
+                    <p class="template-desc">Tailored for customizable apparel, posters, and gift items.</p>
+                </div>
+                <a href="home-pod.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 7. Pet Care -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Pet Care</h3>
+                    <p class="template-desc">Playful, bright interface perfect for animal food and accessories.</p>
+                </div>
+                <a href="home-pet-care.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 8. Baby Store -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Baby Store</h3>
+                    <p class="template-desc">Soft colors and friendly navigation for children's toys and clothing.</p>
+                </div>
+                <a href="home-baby.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 9. Auto / Automotive -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Automotive</h3>
+                    <p class="template-desc">High-contrast store for vehicle components, parts, and tools.</p>
+                </div>
+                <a href="home-auto.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 10. Decor -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Home Decor</h3>
+                    <p class="template-desc">Elegant aesthetic highlighting art pieces and home ornaments.</p>
+                </div>
+                <a href="home-decor.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 11. Cosmetic -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Cosmetics</h3>
+                    <p class="template-desc">Luxurious makeup, skincare, and perfume display layout.</p>
+                </div>
+                <a href="home-cosmetic.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 12. Organic -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Organic Grocery</h3>
+                    <p class="template-desc">Clean, fresh green accents for agricultural and food markets.</p>
+                </div>
+                <a href="home-organic.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 13. Headphones -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Audio & Headphones</h3>
+                    <p class="template-desc">Dark premium style focusing on high-fidelity audio equipment.</p>
+                </div>
+                <a href="home-headphone.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 14. Jewelry -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.4);">DEMO ONLY</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/jewel.png" alt="Jewelry Store Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Jewelry Store</h3>
+                    <p class="template-desc">Shining display and high resolution grids for diamonds and gold.</p>
+                </div>
+                <a href="home-jewelry.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- External Work 1: Thanima -->
+            <div class="template-card external-work">
+                <span class="badge-new" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">LIVE WORK</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/thanima.jpeg" alt="Thanima Website Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Saree Store</h3>
+                    <p class="template-desc">Live production e-commerce store concept by Sheraktech.</p>
+                </div>
+                <a href="https://thanima.sheraktech.com/" target="_blank" class="preview-btn" style="color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.15);">Visit Website</a>
+            </div>
+
+            <!-- External Work 2: Aurielle -->
+            <div class="template-card external-work">
+                <span class="badge-new" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">LIVE WORK</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/aurielle.jpeg" alt="Aurielle Website Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Jewelry Store</h3>
+                    <p class="template-desc">Premium online store experience designed and developed for Aurielle.</p>
+                </div>
+                <a href="https://aurielle.sheraktech.com/" target="_blank" class="preview-btn" style="color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.15);">Visit Website</a>
+            </div>
+
+            <!-- External Work 3: Veilux -->
+            <div class="template-card external-work">
+                <span class="badge-new" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">LIVE WORK</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/veilux.jpeg" alt="Veilux Website Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Fashion and Clothing</h3>
+                    <p class="template-desc">Creative digital art and custom print storefront designed by Sheraktech.</p>
+                </div>
+                <a href="https://sherakart.sheraktech.com/" target="_blank" class="preview-btn" style="color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.15);">Visit Website</a>
+            </div>
+
+            <!-- External Work 4: The Drape Culture -->
+            <div class="template-card external-work">
+                <span class="badge-new" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">LIVE WORK</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/tdc.jpeg" alt="The Drape Culture Website Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Saree Store</h3>
+                    <p class="template-desc">Custom designer boutique and ethnic apparel storefront.</p>
+                </div>
+                <a href="https://thedrapeculture.com/" target="_blank" class="preview-btn" style="color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.15);">Visit Website</a>
+            </div>
+
+            <!-- External Work 5: Lakshak -->
+            <div class="template-card external-work">
+                <span class="badge-new" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">LIVE WORK</span>
+                <div class="card-content">
+                    <div class="work-thumbnail-container">
+                        <img src="../assets/images/lakshak.jpeg" alt="Lakshak Website Preview" class="work-thumbnail" loading="lazy">
+                    </div>
+                    <h3 class="template-name">Clothing</h3>
+                    <p class="template-desc">Sleek multi-category premium shopping hub and brand platform.</p>
+                </div>
+                <a href="https://lakshak.com/" target="_blank" class="preview-btn" style="color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.15);">Visit Website</a>
+            </div>
+
+            <!-- 15. Furniture -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Furniture</h3>
+                    <p class="template-desc">Comfortable and spacious layout suitable for home furnishing.</p>
+                </div>
+                <a href="home-furniture.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 16. Garden & Plants -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Garden & Plants</h3>
+                    <p class="template-desc">Minimalist layout celebrating indoor plants and gardening tools.</p>
+                </div>
+                <a href="home-garden.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 17. Sneaker -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Sneaker Store</h3>
+                    <p class="template-desc">Urban, street-style storefront with dynamic hover states.</p>
+                </div>
+                <a href="home-sneaker.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 18. Sport -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Sportswear</h3>
+                    <p class="template-desc">Energetic layout tailored for activewear and fitness gear.</p>
+                </div>
+                <a href="home-sport.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 19. Bag & Accessories -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Bags & Accessories</h3>
+                    <p class="template-desc">Focuses on detail shots of backpacks, purses, and watches.</p>
+                </div>
+                <a href="home-bag-accessories.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 20. Construction -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Construction</h3>
+                    <p class="template-desc">Industrial layout for building tools, safety gear, and supplies.</p>
+                </div>
+                <a href="home-construction.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+            <!-- 21. Office Equipment -->
+            <div class="template-card">
+                <span class="badge-new" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">DEMO</span>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="icon icon-storefront"></i>
+                    </div>
+                    <h3 class="template-name">Office Supplies</h3>
+                    <p class="template-desc">Professional corporate layout for work-from-home gear and office items.</p>
+                </div>
+                <a href="home-office-equipment.html" class="preview-btn">Launch Concept</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp action button matching screenshot -->
+    <a href="https://wa.me/918921119446?text=Can%20i%20have%20my%20own%20E-Commerce%20website%3F" class="whatsapp-float" target="_blank">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.762-4.339 9.764-9.713.001-2.602-1.01-5.05-2.85-6.892-1.84-1.842-4.288-2.856-6.886-2.858-5.404 0-9.762 4.34-9.765 9.715-.002 1.562.478 3.087 1.387 4.417L1.8 22.3l4.847-1.146zm12.302-5.064c-.33-.165-1.951-.963-2.282-1.082-.33-.119-.571-.18-.809.18-.238.36-.921 1.162-1.127 1.399-.208.238-.415.267-.745.101-.33-.165-1.393-.513-2.656-1.638-.98-.874-1.642-1.953-1.834-2.282-.193-.33-.02-.508.145-.671.149-.147.33-.387.496-.58.165-.194.22-.32.33-.535.11-.214.055-.401-.027-.567-.083-.166-.809-1.951-1.11-2.677-.29-.702-.587-.607-.809-.619-.209-.011-.448-.014-.688-.014-.239 0-.629.09-.957.448-.328.358-1.253 1.222-1.253 2.98 0 1.76 1.282 3.456 1.46 3.693.179.238 2.525 3.856 6.116 5.407.854.369 1.52.59 2.039.756.858.273 1.638.234 2.254.142.687-.102 1.951-.798 2.227-1.57.275-.773.275-1.437.193-1.57-.083-.133-.303-.213-.633-.378z"/>
+        </svg>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll(".template-card");
+            cards.forEach(card => {
+                const link = card.querySelector("a.preview-btn");
+                if (link) {
+                    const href = link.getAttribute("href");
+                    if (href !== "home-fashionweb.html" && href !== "home-jewelry.html" && !card.classList.contains("external-work")) {
+                        card.classList.add("secret-template");
+                        card.style.display = "none";
+                    }
+                }
+            });
+
+            let keySequence = "";
+            const activeKeys = new Set();
+
+            window.addEventListener("keydown", (e) => {
+                const key = e.key.toLowerCase();
+                activeKeys.add(key);
+                keySequence += key;
+
+                if (keySequence.endsWith("si") || keySequence.endsWith("is") || (activeKeys.has("s") && activeKeys.has("i"))) {
+                    document.querySelectorAll(".secret-template").forEach(card => {
+                        card.style.display = "flex";
+                    });
+                }
+
+                if (keySequence.length > 5) {
+                    keySequence = keySequence.slice(-2);
+                }
+            });
+
+            window.addEventListener("keyup", (e) => {
+                activeKeys.delete(e.key.toLowerCase());
+            });
+        });
+    </script>
+</body>
+</html>
